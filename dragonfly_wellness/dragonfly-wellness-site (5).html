@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C87XHER9YE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-C87XHER9YE');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragonfly Wellness - A Clearer Cycle. A Healthier Body.</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-bg: #E8D4B8;
+            --primary-text: #457C6B;
+            --dark-text: #2a4a3f;
+            --light-accent: #f4e8d8;
+            --medium-accent: #d4b896;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(180deg, #E8D4B8 0%, #f0dfc2 50%, #E8D4B8 100%);
+            color: var(--primary-text);
+            line-height: 1.8;
+            font-size: 18px;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(232, 212, 184, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 40px;
+            box-shadow: 0 2px 20px rgba(69, 124, 107, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 15px 40px;
+            background: rgba(232, 212, 184, 0.98);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--dark-text);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--primary-text);
+            text-decoration: none;
+            font-size: 16px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--dark-text);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--dark-text);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 40px 20px;
+            position: relative;
+            margin-top: 0;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 300;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            color: var(--dark-text);
+            letter-spacing: 1px;
+        }
+        
+        .business-name {
+            font-size: clamp(48px, 6vw, 72px);
+            font-weight: 400;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--dark-text);
+        }
+        
+        .tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: 25px;
+            color: var(--primary-text);
+            letter-spacing: 0.5px;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            font-style: italic;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 40px auto;
+            background: linear-gradient(135deg, rgba(69, 124, 107, 0.1) 0%, rgba(230, 207, 166, 0.2) 100%);
+            border: 1px solid rgba(69, 124, 107, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            color: var(--primary-text);
+            opacity: 0.6;
+        }
+        
+        /* Sections */
+        section {
+            padding: 100px 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--dark-text);
+            letter-spacing: 1px;
+        }
+        
+        /* Headline Section */
+        .headline-section {
+            padding: 20px 40px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(230, 207, 166, 0.3) 50%, rgba(255, 255, 255, 0.1) 100%);
+        }
+        
+        .headline-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-headline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 4.5vw, 52px);
+            font-weight: 300;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            color: var(--dark-text);
+            letter-spacing: 1px;
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            font-style: italic;
+            color: var(--primary-text);
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            opacity: 0.95;
+        }
+        
+        /* Logo Divider Section */
+        .logo-divider {
+            padding: 30px 0 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo-divider img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        /* About Section */
+        .about-content {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(69, 124, 107, 0.08);
+            position: relative;
+        }
+        
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, transparent, rgba(69, 124, 107, 0.1), transparent);
+            border-radius: 12px;
+            z-index: -1;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 18px;
+            line-height: 1.9;
+        }
+        
+        .approach-list {
+            list-style: none;
+            margin: 30px 0;
+            padding-left: 20px;
+        }
+        
+        .approach-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            font-size: 17px;
+        }
+        
+        .approach-list li::before {
+            content: 'æ';
+            position: absolute;
+            left: 0;
+            color: var(--dark-text);
+            font-size: 20px;
+        }
+        
+        /* Services Section */
+        .services {
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 50px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(69, 124, 107, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(69, 124, 107, 0.12);
+        }
+        
+        .service-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+            letter-spacing: 0.5px;
+        }
+        
+        .price {
+            font-size: 22px;
+            color: var(--dark-text);
+            font-weight: 400;
+            margin-top: 20px;
+            font-style: italic;
+        }
+        
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(69, 124, 107, 0.15) 0%, rgba(230, 207, 166, 0.25) 100%);
+            border: 2px solid rgba(69, 124, 107, 0.3);
+            border-radius: 12px;
+            padding: 50px 40px;
+            text-align: center;
+            margin: 60px auto 0;
+            max-width: 700px;
+            box-shadow: 0 8px 30px rgba(69, 124, 107, 0.1);
+        }
+        
+        .cta-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--dark-text);
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: var(--primary-text);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-family: 'Crimson Text', serif;
+            font-size: 20px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(69, 124, 107, 0.2);
+        }
+        
+        .cta-button:hover {
+            background: var(--dark-text);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(69, 124, 107, 0.35);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .contact-image {
+            width: 100%;
+            height: 450px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(69, 124, 107, 0.15);
+        }
+        
+        .contact-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-size: 16px;
+            color: var(--dark-text);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 15px 20px;
+            border: 1px solid rgba(69, 124, 107, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.5);
+            font-family: 'Crimson Text', serif;
+            font-size: 16px;
+            color: var(--dark-text);
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-text);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 0 3px rgba(69, 124, 107, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            padding: 15px 40px;
+            background: var(--primary-text);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Crimson Text', serif;
+            font-size: 18px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+        
+        .submit-btn:hover {
+            background: var(--dark-text);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(69, 124, 107, 0.3);
+        }
+        
+        /* Podcast Section */
+        .podcast-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .podcast-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 30px;
+            background: rgba(69, 124, 107, 0.1);
+            color: var(--dark-text);
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+        
+        .podcast-link:hover {
+            background: var(--primary-text);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(69, 124, 107, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(69, 124, 107, 0.05);
+            color: var(--primary-text);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Decorative Elements */
+        .decoration {
+            position: absolute;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            border: 2px solid var(--primary-text);
+            border-radius: 50%;
+            top: 10%;
+            right: -150px;
+            animation: rotate 30s linear infinite;
+        }
+        
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            border: 2px solid var(--primary-text);
+            border-radius: 50%;
+            bottom: 20%;
+            left: -100px;
+            animation: rotate 25s linear infinite reverse;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            nav {
+                padding: 15px 20px;
+            }
+            
+            .hero {
+                padding: 15px 20px 30px;
+                margin-top: 0;
+            }
+            
+            section {
+                padding: 60px 20px;
+            }
+            
+            .about-content, .service-card {
+                padding: 30px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .contact-image {
+                height: 300px;
+            }
+            
+            .cta-box {
+                padding: 35px 25px;
+                margin: 40px auto 0;
+            }
+            
+            .cta-text {
+                font-size: 26px;
+                margin-bottom: 25px;
+            }
+            
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 18px;
+            }
+            
+            .logo-divider {
+                padding: 20px 0 30px;
+            }
+            
+            .logo-divider img {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .business-name {
+                font-size: 38px;
+                letter-spacing: 2px;
+            }
+            
+            .tagline {
+                font-size: 28px;
+            }
+            
+            h2 {
+                font-size: 28px;
+            }
+            
+            .podcast-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">DRAGONFLY WELLNESS</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#headline">Mission</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#podcast">Podcast</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="decoration circle-1"></div>
+        <div class="hero-content">
+            <h1 class="business-name">Dragonfly Wellness</h1>
+        </div>
+    </section>
+
+    <!-- Logo Divider -->
+    <div class="logo-divider">
+        <img src="dragonfly-logo.png" alt="Dragonfly Wellness - real wellness. real life">
+    </div>
+
+    <!-- Headline Section -->
+    <section id="headline" class="headline-section">
+        <div class="container">
+            <div class="headline-content">
+                <h2 class="section-headline">A Clearer Cycle.<br>A Healthier Body.<br>A Smoother Journey to Pregnancy.</h2>
+                <p class="section-subtitle">Learn what your symptoms really mean so you can support your body through any phase of life.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>Hi, I'm Christina - a holistically minded women's health practitioner who feels strongly that you deserve to live with an understanding of your body rather than feeling like your body is a problem preventing you from the life you desire.</p>
+                
+                <p>I started exploring this work because I needed it. For years, I lived with a growing number of symptoms that seemed random, and when I sought out the help of my doctor, I was met with band-aid solutions and no real answers at best - dismissive or gaslighting behaviors at worst.</p>
+                
+                <p>That was when I officially decided it was time to lean into my intuition, the quiet whispers, to follow a path entirely my own. That path led me to the cyclical wisdom that has always been there, even when it was quieted for some time.</p>
+                
+                <p>I learned that my body isn't complicated; it is timed, wise, and constantly speaking to me. As soon as I decided to listen, my energy shifted, my emotional patterns made sense, and when I became ready to think about conception, it happened smoothly. I realized I'd already begun that journey the day I said yes to listening, supporting, and accepting.</p>
+                
+                <p>Now, I guide women who are walking that same path. Women who want to feel better in their bodies, understand their hormones and female body, and prepare themselves for pregnancy or transition through perimenopause grounded, and ready to feel good in the next chapter of life.</p>
+                
+                <p><strong>My approach blends:</strong></p>
+                <ul class="approach-list">
+                    <li>cycle awareness & symptom interpretation</li>
+                    <li>nervous system support</li>
+                    <li>nutrition & minerals</li>
+                    <li>emotional & intuitive listening</li>
+                    <li>herbal & holistic therapies</li>
+                    <li>the gentle encouragement that every woman needs to know she's on the right track</li>
+                </ul>
+                
+                <p>You don't have to figure this out alone, and your body is NOT working against you - it's trying to speak to you. I'm here to help you hear it.</p>
+                
+                <div style="margin-top: 40px; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    <img src="about-photo.gif" alt="Christina" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 30px rgba(69, 124, 107, 0.15);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="decoration circle-2"></div>
+        <div class="container">
+            <h2>Services</h2>
+            
+            <div class="service-card">
+                <h3 class="service-title">One-on-One Support</h3>
+                <p>Personalized, on-going guidance for the woman ready to see change happen quickly. Three month program, with the option to extend as needed.</p>
+                <p>Support through hormonal transitions, managing symptoms or a diagnosis, or preparing for conception.</p>
+                <p>Includes weekly touchpoints and bi-weekly virtual meetings. In-person available upon request.</p>
+                <p class="price">$250 per month</p>
+            </div>
+            
+            <div class="service-card">
+                <h3 class="service-title">Personalized Audio</h3>
+                <p>A custom, intimate voice-note created just for you. I tune into your symptoms, cycle phase, goals, and current emotional landscape to offer grounded guidance you can return to anytime.</p>
+                <p>For the woman seeking clarity and support without committing to monthly support. Includes tailored steps, emotional insight, and practical hormone or fertility recommendations.</p>
+                <p class="price">$44 one time payment</p>
+            </div>
+            
+            <div class="service-card">
+                <h3 class="service-title">Kitchen Sessions: Learn, Cook, Nourish.</h3>
+                <p>I bring the groceries, meet you in your kitchen, and we cook togetherreal food that supports your body and fits your life. Whether you want to master hormone-friendly meal prep, develop a repertoire of easy-to-assemble, nourishing snacks, or reinvent your comfort food favorites as healthily as possible, we'll make it happen.</p>
+                <p>This isn't about perfection or restriction. It's about feeling confident and excited in your kitchen. At my core, I'm a foodie, and I settle for nothing less than delicious, fresh flavor. Let me show you how to do that while eating nutrient dense dishes.</p>
+                <p>Have small kids, or a busy workweek? I'll tailor our session to your needs. Hands-on learning, real food, laughter.</p>
+                <p class="price">$150 per session (+ groceries), or buy a 4-pack for $400 (save $200!)</p>
+                <p style="font-style: italic; margin-top: 10px; opacity: 0.9;">Group rates are available.</p>
+            </div>
+            
+            <!-- CTA Box -->
+            <div class="cta-box">
+                <p class="cta-text">Schedule your complimentary consultation call</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmWd-MQtjoKGG31JCiGexXjAytRQU9n1v81TTqwjonzy5iZQ/viewform?usp=dialog" target="_blank" class="cta-button">Start Here</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Podcast Section -->
+    <section id="podcast" class="podcast">
+        <div class="container">
+            <h2>Cycles of Metamorphosis</h2>
+            <p style="text-align: center; margin-bottom: 40px; font-style: italic;">
+                Join me on a journey through the wisdom of our cycles, where transformation meets understanding.
+            </p>
+            <div class="podcast-links">
+                <a href="https://open.spotify.com/show/4PPF8tiBkShMqWpzY7wkZF" target="_blank" class="podcast-link">
+                    Listen on Spotify
+                </a>
+                <a href="https://podcasts.apple.com/ca/podcast/cycles-of-metamorphosis/id1744971692" target="_blank" class="podcast-link">
+                    Listen on Apple Podcasts
+                </a>
+                <a href="https://cyclesofmetamorphosis.substack.com/" target="_blank" class="podcast-link">
+                    Read on Substack
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div class="contact-container">
+                <div class="contact-image">
+                    <img src="contact-photo.gif" alt="Christina" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+                <form class="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdnqJv8-CAuxa1eEYP5besoZKA_un5wPIEb0z_PX3pgmTrrhg/formResponse" method="POST" target="_blank">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="entry.958882996" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="entry.1658803641" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="entry.1557566415" placeholder="I'm seeking..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Dragonfly Wellness. All rights reserved.</p>
+        <p style="margin-top: 10px; font-style: italic; font-size: 16px;">Supporting women through their cyclical journey with wisdom and grace.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in sections on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section:not(.hero)').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add parallax effect to decorative elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const circles = document.querySelectorAll('.decoration');
+            circles.forEach(circle => {
+                const speed = circle.classList.contains('circle-1') ? 0.5 : 0.3;
+                circle.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Handle message textarea placeholder
+        const messageTextarea = document.getElementById('message');
+        if (messageTextarea) {
+            messageTextarea.addEventListener('focus', function() {
+                if (this.value === '' && this.placeholder === "I'm seeking...") {
+                    this.placeholder = '';
+                }
+            });
+            
+            messageTextarea.addEventListener('blur', function() {
+                if (this.value === '' && this.placeholder === '') {
+                    this.placeholder = "I'm seeking...";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
