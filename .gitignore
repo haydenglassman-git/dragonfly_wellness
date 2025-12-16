@@ -10,3 +10,8 @@ build/
 .idea/
 .vscode/
 .DS_Store
+
+# Generated/optimized images (run optimize-images.sh to regenerate)
+dragonfly_wellness/*.webp
+dragonfly_wellness/*-static.jpg
+dragonfly_wellness/image-backups-*/
